@@ -11,5 +11,5 @@ jobs:
           java-version: 17
           cache: sbt
       - uses: sbt/setup-sbt@v1
-      - name: Run tests (excluding capstone)
-        run: sbt "testOnly problem1.* problem2.* problem3.* problem4.* problem5.* problem6.* problem7.* problem8.*"
+      - name: Run tests (excluding capstone & mapexercise)
+        run: sbt "problem1/test" "problem2/test" "problem3/test" "problem4/test" "problem5/test" "problem6/test" "problem7/test" "problem8/test"
