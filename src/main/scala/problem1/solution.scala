@@ -2,15 +2,18 @@ package problem1
 
 // NOTE: Value Domain - Integration of Const(n)
 
-case class Const(n: Int) extends Expr
+// FIXME:
+??? Const(n: Int) ???
 
-sealed trait Value
-case class NumValue(n: Int) extends Value
+// FIXME:
+??? Value
+??? NumValue(n: Int) ???
 
-sealed trait Expr {
-  def eval : Value = {
+// FIXME:
+??? Expr {
+  def eval : ??? = {
     this match {
-      case Const(n) => NumValue(n)
+      case ??? => ???
     }
   }
 }
