@@ -1,6 +1,6 @@
 package problem3
 
-// Gt e1 > e2 (Greater than)
+// NOTE: Gt(e1, e2):
 
 case class Const(n: Int) extends Expr
 

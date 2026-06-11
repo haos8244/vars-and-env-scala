@@ -1,6 +1,6 @@
 package problem6
 
-// Ident and Let (id and let id = e1 in e2)
+// NOTE: Ident(id) | Let(id, e1, e2):
 
 type Environment = Map[String, Value]
 

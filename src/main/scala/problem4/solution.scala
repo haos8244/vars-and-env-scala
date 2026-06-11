@@ -1,6 +1,6 @@
 package problem4
 
-// ERRORS
+// NOTE: ERRORS:
 
 case class Const(n: Int) extends Expr
 

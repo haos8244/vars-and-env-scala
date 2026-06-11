@@ -1,6 +1,6 @@
 package problem5
 
-// Interpreter - Env
+// NOTE: Interpreter - Environment:
 
 type Environment = Map[String, Value]
 

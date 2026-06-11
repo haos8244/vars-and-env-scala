@@ -7,7 +7,7 @@ class MapExerciseTest extends AnyFunSuite {
 
   val sample: Map[String, Int] = Map("x" -> 1, "y" -> 2, "z" -> 3)
 
-  // ---- lookupOrDefault ----
+  // lookupOrDefault
   test("lookup existing key returns its value") {
     assert(lookupOrDefault(sample, "y") == 2)
   }
@@ -20,7 +20,7 @@ class MapExerciseTest extends AnyFunSuite {
     assert(lookupOrDefault(Map(), "x") == -1)
   }
 
-  // ---- addBinding ----
+  // addBinding
   test("addBinding adds a new key") {
     assert(addBinding(sample, "w", 4) == Map("x" -> 1, "y" -> 2, "z" -> 3, "w" -> 4))
   }
@@ -36,7 +36,7 @@ class MapExerciseTest extends AnyFunSuite {
     assert(!sample.contains("w"))     // the new key didn't leak in
   }
 
-  // ---- isBound ----
+  // isBound
   test("isBound true for present key") {
     assert(isBound(sample, "z"))
   }
@@ -45,7 +45,7 @@ class MapExerciseTest extends AnyFunSuite {
     assert(!isBound(sample, "q"))
   }
 
-  // ---- removeBinding ----
+  // removeBinding
   test("removeBinding removes a present key") {
     assert(removeBinding(sample, "y") == Map("x" -> 1, "z" -> 3))
   }
@@ -60,7 +60,7 @@ class MapExerciseTest extends AnyFunSuite {
     assert(sample == before)
   }
 
-  // ---- extend (environment extension) ----
+  // extend (environment extension)
   test("extend merges disjoint maps") {
     assert(extend(Map("a" -> 1), Map("b" -> 2)) == Map("a" -> 1, "b" -> 2))
   }
@@ -73,7 +73,7 @@ class MapExerciseTest extends AnyFunSuite {
     assert(extend(sample, Map()) == sample)
   }
 
-  // ---- size ----
+  // size
   test("size of sample is 3") {
     assert(size(sample) == 3)
   }
@@ -82,7 +82,7 @@ class MapExerciseTest extends AnyFunSuite {
     assert(size(Map()) == 0)
   }
 
-  // ---- increment ----
+  // increment
   test("increment existing key adds 1") {
     assert(increment(sample, "x")("x") == 2)
   }

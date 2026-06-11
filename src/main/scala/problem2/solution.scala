@@ -1,6 +1,6 @@
 package problem2
 
-// Plus e1 + e2
+// NOTE: Plus(e1, e2):
 
 case class Const(n: Int) extends Expr
 

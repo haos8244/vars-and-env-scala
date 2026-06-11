@@ -4,12 +4,12 @@ import org.scalatest.funsuite.AnyFunSuite
 
 class Problem3Test extends AnyFunSuite {
 
-  // ---- Const ----
+  //  Const 
   test("Const(1) = NumValue(1)") {
     assert(Const(1).eval == NumValue(1))
   }
 
-  // ---- Plus (still works) ----
+  //  Plus (still works) 
   test("1 + 2 = 3") {
     assert(Plus(Const(1), Const(2)).eval == NumValue(3))
   }
@@ -20,7 +20,7 @@ class Problem3Test extends AnyFunSuite {
     )
   }
 
-  // ---- Gt: basic true / false ----
+  //  Gt: basic true / false 
   test("1 > 2 = false") {
     assert(Gt(Const(1), Const(2)).eval == BoolValue(false))
   }
@@ -29,12 +29,12 @@ class Problem3Test extends AnyFunSuite {
     assert(Gt(Const(4), Const(3)).eval == BoolValue(true))
   }
 
-  // ---- Gt: equal operands (not strictly greater) ----
+  //  Gt: equal operands (not strictly greater) 
   test("5 > 5 = false (strict, not >=)") {
     assert(Gt(Const(5), Const(5)).eval == BoolValue(false))
   }
 
-  // ---- Gt: negatives ----
+  //  Gt: negatives 
   test("-1 > -2 = true") {
     assert(Gt(Const(-1), Const(-2)).eval == BoolValue(true))
   }
@@ -43,7 +43,7 @@ class Problem3Test extends AnyFunSuite {
     assert(Gt(Const(-5), Const(0)).eval == BoolValue(false))
   }
 
-  // ---- Gt: operands are themselves expressions (nested eval) ----
+  //  Gt: operands are themselves expressions (nested eval) 
   test("(1 + 2) > (3 + 4) = false") {
     assert(
       Gt(Plus(Const(1), Const(2)), Plus(Const(3), Const(4))).eval == BoolValue(false)
@@ -62,7 +62,7 @@ class Problem3Test extends AnyFunSuite {
     )
   }
 
-  // ---- Result shape: Gt produces a Bool, Plus produces a Num ----
+  //  Result shape: Gt produces a Bool, Plus produces a Num 
   test("Gt result is a BoolValue") {
     assert(Gt(Const(1), Const(2)).eval.isInstanceOf[BoolValue])
   }
@@ -71,7 +71,7 @@ class Problem3Test extends AnyFunSuite {
     assert(Plus(Const(1), Const(2)).eval.isInstanceOf[NumValue])
   }
 
-  // ---- Result shape: unwrap the boolean ----
+  //  Result shape: unwrap the boolean 
   test("4 > 3 unwraps to true") {
     Gt(Const(4), Const(3)).eval match {
       case BoolValue(b) => assert(b)

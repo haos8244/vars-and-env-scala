@@ -4,7 +4,7 @@ import org.scalatest.funsuite.AnyFunSuite
 
 class Problem4Test extends AnyFunSuite {
 
-  // ---- Const / Plus / Gt still work (no regressions) ----
+  //  Const / Plus / Gt still work (no regressions) 
   test("Const(1) = NumValue(1)") {
     assert(Const(1).eval == NumValue(1))
   }
@@ -27,7 +27,7 @@ class Problem4Test extends AnyFunSuite {
     assert(Gt(Const(1), Const(2)).eval == BoolValue(false))
   }
 
-  // ---- Plus errors: a Bool operand is not a number ----
+  //  Plus errors: a Bool operand is not a number 
   test("1 + (3 > 2) = ERROR  (right operand is a Bool)") {
     assert(Plus(Const(1), Gt(Const(3), Const(2))).eval == ErrorValue)
   }
@@ -42,7 +42,7 @@ class Problem4Test extends AnyFunSuite {
     )
   }
 
-  // ---- Gt errors: a Bool operand can't be compared ----
+  //  Gt errors: a Bool operand can't be compared 
   test("(1 > 2) > 3 = ERROR  (left operand is a Bool)") {
     assert(Gt(Gt(Const(1), Const(2)), Const(3)).eval == ErrorValue)
   }
@@ -51,7 +51,7 @@ class Problem4Test extends AnyFunSuite {
     assert(Gt(Const(3), Gt(Const(1), Const(2))).eval == ErrorValue)
   }
 
-  // ---- Error propagation: an inner ERROR bubbles up ----
+  //  Error propagation: an inner ERROR bubbles up 
   test("(1 + (2 > 1)) + 3 = ERROR  (inner Plus errors, outer propagates)") {
     val inner = Plus(Const(1), Gt(Const(2), Const(1)))   // -> ErrorValue
     assert(Plus(inner, Const(3)).eval == ErrorValue)
@@ -62,7 +62,7 @@ class Problem4Test extends AnyFunSuite {
     assert(Gt(inner, Const(3)).eval == ErrorValue)
   }
 
-  // ---- Result shape ----
+  //  Result shape 
   test("an erroring expression evaluates to ErrorValue (the object)") {
     assert(Plus(Const(1), Gt(Const(1), Const(2))).eval == ErrorValue)
   }

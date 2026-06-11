@@ -8,12 +8,12 @@ class Problem5Test extends AnyFunSuite {
   // but eval now requires it as an argument).
   val emptyEnv: Environment = Map()
 
-  // ---- Const (now takes an env) ----
+  //  Const (now takes an env) 
   test("Const(1) = NumValue(1) under empty env") {
     assert(Const(1).eval(emptyEnv) == NumValue(1))
   }
 
-  // ---- Plus still works with the env threaded through ----
+  //  Plus still works with the env threaded through 
   test("1 + 2 = 3") {
     assert(Plus(Const(1), Const(2)).eval(emptyEnv) == NumValue(3))
   }
@@ -24,7 +24,7 @@ class Problem5Test extends AnyFunSuite {
     )
   }
 
-  // ---- Gt still works with the env threaded through ----
+  //  Gt still works with the env threaded through 
   test("4 > 3 = true") {
     assert(Gt(Const(4), Const(3)).eval(emptyEnv) == BoolValue(true))
   }
@@ -45,7 +45,7 @@ class Problem5Test extends AnyFunSuite {
     )
   }
 
-  // ---- Errors still propagate ----
+  //  Errors still propagate 
   test("1 + (3 > 2) = ERROR") {
     assert(Plus(Const(1), Gt(Const(3), Const(2))).eval(emptyEnv) == ErrorValue)
   }
@@ -54,7 +54,7 @@ class Problem5Test extends AnyFunSuite {
     assert(Plus(Gt(Const(2), Const(3)), Const(4)).eval(emptyEnv) == ErrorValue)
   }
 
-  // ---- The env is accepted but doesn't change Const/Plus/Gt results ----
+  //  The env is accepted but doesn't change Const/Plus/Gt results 
   // (A non-empty env should give identical answers, since nothing reads it yet.)
   test("a populated env doesn't affect arithmetic (no Ident/Let yet)") {
     val populated: Environment = Map("x" -> NumValue(99), "y" -> BoolValue(true))
@@ -62,7 +62,7 @@ class Problem5Test extends AnyFunSuite {
     assert(Gt(Const(5), Const(1)).eval(populated) == BoolValue(true))
   }
 
-  // ---- Result shape ----
+  //  Result shape 
   test("Plus yields NumValue, Gt yields BoolValue") {
     assert(Plus(Const(1), Const(2)).eval(emptyEnv).isInstanceOf[NumValue])
     assert(Gt(Const(1), Const(2)).eval(emptyEnv).isInstanceOf[BoolValue])

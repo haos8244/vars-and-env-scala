@@ -4,12 +4,12 @@ import org.scalatest.funsuite.AnyFunSuite
 
 class Problem2Test extends AnyFunSuite {
 
-  // ---- Const ----
+  //  Const 
   test("Const(1) = NumValue(1)") {
     assert(Const(1).eval == NumValue(1))
   }
 
-  // ---- Plus: basic ----
+  //  Plus: basic 
   test("1 + 2 = 3") {
     assert(Plus(Const(1), Const(2)).eval == NumValue(3))
   }
@@ -26,7 +26,7 @@ class Problem2Test extends AnyFunSuite {
     assert(Plus(Const(5), Const(0)).eval == NumValue(5))
   }
 
-  // ---- Plus: negatives ----
+  //  Plus: negatives 
   test("5 + (-3) = 2") {
     assert(Plus(Const(5), Const(-3)).eval == NumValue(2))
   }
@@ -35,7 +35,7 @@ class Problem2Test extends AnyFunSuite {
     assert(Plus(Const(-2), Const(-2)).eval == NumValue(-4))
   }
 
-  // ---- Plus: nested ----
+  //  Plus: nested 
   test("(1 + 2) + (3 + 4) = 10") {
     assert(
       Plus(Plus(Const(1), Const(2)), Plus(Const(3), Const(4))).eval == NumValue(10)
@@ -59,7 +59,7 @@ class Problem2Test extends AnyFunSuite {
     assert(e.eval == NumValue(15))
   }
 
-  // ---- Result shape ----
+  //  Result shape 
   test("Plus result is a NumValue") {
     assert(Plus(Const(2), Const(2)).eval.isInstanceOf[NumValue])
   }

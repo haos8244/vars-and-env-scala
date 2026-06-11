@@ -6,7 +6,7 @@ class Problem6Test extends AnyFunSuite {
 
   val emptyEnv: Environment = Map()
 
-  // ---- Ident: lookup under a given environment ----
+  //  Ident: lookup under a given environment 
   test("x under {} = ERROR  (unbound variable)") {
     assert(Ident("x").eval(emptyEnv) == ErrorValue)
   }
@@ -23,7 +23,7 @@ class Problem6Test extends AnyFunSuite {
     assert(Ident("x").eval(Map("x" -> BoolValue(true))) == BoolValue(true))
   }
 
-  // ---- Let: basic binding ----
+  //  Let: basic binding 
   test("let x = 2 in x = NumValue(2)") {
     assert(Let("x", Const(2), Ident("x")).eval(emptyEnv) == NumValue(2))
   }
@@ -36,14 +36,14 @@ class Problem6Test extends AnyFunSuite {
     assert(Let("x", Plus(Const(3), Const(4)), Ident("x")).eval(emptyEnv) == NumValue(7))
   }
 
-  // ---- Let: the bound variable is usable in the body ----
+  //  Let: the bound variable is usable in the body 
   test("let x = 5 in x + 1 = NumValue(6)") {
     assert(
       Let("x", Const(5), Plus(Ident("x"), Const(1))).eval(emptyEnv) == NumValue(6)
     )
   }
 
-  // ---- Let: nested lets, two distinct variables ----
+  //  Let: nested lets, two distinct variables 
   test("let x = 3 in let y = 2 in x + y = NumValue(5)") {
     val e = Let("x", Const(3),
               Let("y", Const(2),
@@ -51,7 +51,7 @@ class Problem6Test extends AnyFunSuite {
     assert(e.eval(emptyEnv) == NumValue(5))
   }
 
-  // ---- Let: shadowing (inner binding overrides outer) ----
+  //  Let: shadowing (inner binding overrides outer) 
   test("let x = 1 in let x = 2 in x = NumValue(2)  (inner shadows outer)") {
     val e = Let("x", Const(1),
               Let("x", Const(2),
@@ -59,7 +59,7 @@ class Problem6Test extends AnyFunSuite {
     assert(e.eval(emptyEnv) == NumValue(2))
   }
 
-  // ---- Let: the e1 of an inner let sees the OUTER binding ----
+  //  Let: the e1 of an inner let sees the OUTER binding 
   // let x = 2 in
   //   let y = (let x = x + 1 in x + 1) in
   //     x + y
@@ -75,7 +75,7 @@ class Problem6Test extends AnyFunSuite {
     assert(e.eval(emptyEnv) == NumValue(6))
   }
 
-  // ---- Let: outer binding survives after inner scope ends ----
+  //  Let: outer binding survives after inner scope ends 
   test("outer x unchanged after inner let: let x = 10 in (let x = 99 in x) ... outer still 10") {
     // (let x = 99 in x) -> 99, but that's a separate subexpression;
     // here we add the inner result to the outer x to prove outer x is still 10.
@@ -87,13 +87,13 @@ class Problem6Test extends AnyFunSuite {
     assert(e.eval(emptyEnv) == NumValue(109))
   }
 
-  // ---- Let: error in e1 propagates ----
+  //  Let: error in e1 propagates 
   test("let x = (1 > 2) + 3 in x = ERROR  (e1 errors)") {
     val badE1 = Plus(Gt(Const(1), Const(2)), Const(3))  // bool + num -> ErrorValue
     assert(Let("x", badE1, Ident("x")).eval(emptyEnv) == ErrorValue)
   }
 
-  // ---- Ident inside arithmetic / comparison ----
+  //  Ident inside arithmetic / comparison 
   test("let x = 5 in x > 3 = BoolValue(true)") {
     assert(
       Let("x", Const(5), Gt(Ident("x"), Const(3))).eval(emptyEnv) == BoolValue(true)
@@ -105,7 +105,7 @@ class Problem6Test extends AnyFunSuite {
     assert(Plus(Ident("x"), Const(1)).eval(emptyEnv) == ErrorValue)
   }
 
-  // ---- Regression: earlier features still work with full eval ----
+  //  Regression: earlier features still work with full eval 
   test("plain arithmetic still works: (1 + 2) + (3 + 4) = 10") {
     assert(
       Plus(Plus(Const(1), Const(2)), Plus(Const(3), Const(4))).eval(emptyEnv) == NumValue(10)

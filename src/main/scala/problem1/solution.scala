@@ -1,6 +1,6 @@
 package problem1
 
-// Value Domain - Integration of Const(n)
+// NOTE: Value Domain - Integration of Const(n)
 
 case class Const(n: Int) extends Expr
 

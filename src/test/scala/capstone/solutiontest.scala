@@ -7,8 +7,8 @@ class CapstoneTest extends AnyFunSuite {
   val emptyEnv: Environment = Map()
 
   // Reusable bool-producing expressions
-  val tru = Gt(Const(2), Const(1))   // -> BoolValue(true)
-  val fls = Gt(Const(1), Const(2))   // -> BoolValue(false)
+  val tru = Gt(Const(2), Const(1))   // BoolValue(true)
+  val fls = Gt(Const(1), Const(2))   // BoolValue(false)
 
   // =========================================================================
   // Const
@@ -100,7 +100,7 @@ class CapstoneTest extends AnyFunSuite {
         Let("y",
           Let("x", Plus(Ident("x"), Const(1)),   // inner x = 3
             Plus(Ident("x"), Const(1))),          // y = 4
-          Plus(Ident("x"), Ident("y"))))          // outer x (2) + y (4) = 6
+          Plus(Ident("x"), Ident("y"))))          // outer x + y = 6
     assert(e.eval(emptyEnv) == NumValue(6))
   }
   test("outer binding survives inner scope: let x = 10 in (let x = 99 in x) + x = NumValue(109)") {

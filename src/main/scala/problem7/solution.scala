@@ -1,6 +1,6 @@
 package problem7
 
-// Ident and Let (id and let id = e1 in e2)
+// NOTE: IfThenElse(c, t, f):
 
 type Environment = Map[String, Value]
 

@@ -4,7 +4,7 @@ import org.scalatest.funsuite.AnyFunSuite
 
 class Problem1Test extends AnyFunSuite {
 
-  // ---- Const: basic ----
+  // Const: basic
   test("Const(1) evaluates to NumValue(1)") {
     assert(Const(1).eval == NumValue(1))
   }
@@ -17,7 +17,7 @@ class Problem1Test extends AnyFunSuite {
     assert(Const(0).eval == NumValue(0))
   }
 
-  // ---- Const: negatives / larger values ----
+  // Const: negatives / larger values 
   test("Const(-5) evaluates to NumValue(-5)") {
     assert(Const(-5).eval == NumValue(-5))
   }
@@ -26,7 +26,7 @@ class Problem1Test extends AnyFunSuite {
     assert(Const(100).eval == NumValue(100))
   }
 
-  // ---- Result shape ----
+  // Result shape 
   test("eval result is a NumValue") {
     assert(Const(7).eval.isInstanceOf[NumValue])
   }
