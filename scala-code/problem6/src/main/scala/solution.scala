@@ -16,8 +16,9 @@ case class Gt(e1: Expr, e2: Expr) extends Expr
 
 case object ErrorValue extends Value
 
-case class Let(id: String, e1: Expr, e2: Expr) extends Expr
-case class Ident(id: String) extends Expr
+// FIXME:
+??? Let(id: ???, e1: Expr, e2: Expr) ???
+??? Ident(id: ???) ???
 
 sealed trait Expr {
   def eval(env: Environment) : Value = {
@@ -41,22 +42,8 @@ sealed trait Expr {
         case _ => ErrorValue
       }
 
-      case Ident(id) => {
-        if (!env.contains(id)) {
-          ErrorValue
-        }
-        else {
-          env(id)
-        }
-      }
+      // FIXME: - Ident and Let cases
 
-      case Let(id, e1, e2) => e1.eval(env) match {
-        case ErrorValue => ErrorValue
-        case data => {
-          val env_new = env + (id -> data)
-          e2.eval(env_new)
-        }
-      }
     }
   }
 }

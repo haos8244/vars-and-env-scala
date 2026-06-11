@@ -2,7 +2,8 @@ package problem5
 
 // NOTE: Interpreter - Environment:
 
-type Environment = Map[String, Value]
+// FIXME:
+??? Environment = ???
 
 case class Const(n: Int) extends Expr
 
@@ -17,12 +18,13 @@ case class Gt(e1: Expr, e2: Expr) extends Expr
 case object ErrorValue extends Value
 
 sealed trait Expr {
-  def eval(env: Environment) : Value = {
+  // FIXME:
+  def eval(???) : Value = {
     this match {
       case Const(n) => NumValue(n)
 
-      case Plus(e1, e2) => (e1.eval(env)) match {
-        case NumValue(n1) => (e2.eval(env)) match {
+      case Plus(e1, e2) => (e1.eval(???)) match {
+        case NumValue(n1) => (e2.eval(???)) match {
           case NumValue(n2) => NumValue(n1 + n2)
           case _ => ErrorValue
         }
@@ -30,8 +32,8 @@ sealed trait Expr {
       }
 
 
-      case Gt(e1, e2) => (e1.eval(env)) match {
-        case NumValue(n1) => (e2.eval(env)) match {
+      case Gt(e1, e2) => (e1.eval(???)) match {
+        case NumValue(n1) => (e2.eval(???)) match {
           case NumValue(n2) => BoolValue(n1 > n2)
           case _ => ErrorValue
         }

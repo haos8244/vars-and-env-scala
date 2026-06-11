@@ -21,7 +21,8 @@ case class Ident(id: String) extends Expr
 
 case class IfThenElse(eCond: Expr, eTrue: Expr, eFalse: Expr) extends Expr
 
-case class And(e1: Expr, e2: Expr) extends Expr
+// FIXME:
+??? And(e1: Expr, e2: Expr) ???
 
 sealed trait Expr {
   def eval(env: Environment) : Value = {
@@ -68,14 +69,8 @@ sealed trait Expr {
         case _ => ErrorValue
       }
 
-      case And(e1, e2) => e1.eval(env) match {
-        case BoolValue(true) => e2.eval(env) match {
-          case bool_data@BoolValue(_) => bool_data
-          case _ => ErrorValue
-        }
-        case bool_data@BoolValue(false) => bool_data
-        case _ => ErrorValue
-      }
+      // FIXME:
+      
     }
   }
 }

@@ -19,7 +19,8 @@ case object ErrorValue extends Value
 case class Let(id: String, e1: Expr, e2: Expr) extends Expr
 case class Ident(id: String) extends Expr
 
-case class IfThenElse(eCond: Expr, eTrue: Expr, eFalse: Expr) extends Expr
+// FIXME:
+??? IfThenElse(eCond: Expr, eTrue: Expr, eFalse: Expr) ???
 
 sealed trait Expr {
   def eval(env: Environment) : Value = {
@@ -60,11 +61,8 @@ sealed trait Expr {
         }
       }
 
-      case IfThenElse(eCond, e1, e2) => eCond.eval(env) match {
-        case BoolValue(true) => e1.eval(env)
-        case BoolValue(false) => e2.eval(env)
-        case _ => ErrorValue
-      }
+      // FIXME:
+      
     }
   }
 }
