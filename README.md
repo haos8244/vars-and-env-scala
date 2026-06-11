@@ -11,7 +11,7 @@ _circuting of `and`_
 [![Scala](https://img.shields.io/badge/Scala-3.3.7_LTS-DC322F?logo=scala&logoColor=white)](https://www.scala-lang.org/)
 [![sbt](https://img.shields.io/badge/sbt-1.12.11-blue)](https://www.scala-sbt.org/)
 [![ScalaTest](https://img.shields.io/badge/ScalaTest-3.2.19-success)](https://www.scalatest.org/)
-[![Tests](https://github.com/USER/REPO/actions/workflows/scala.yml/badge.svg)](../../actions)
+[![Tests](https://github.com/haos8244/vars-and-env-scala/actions/workflows/test.yml/badge.svg)](../../actions)
 
 </div>
 
@@ -106,6 +106,8 @@ sbt
 > :bulb: **Tip:** keep one `sbt` shell open for the session &rarr; the JVM stays warm and
 > incremental compilation makes the edit &rarr; test loop nearly instant.
 
+---
+
 ## The Capstone
 
 `capstone/` is a self-contained exercise, a full spec in the header comment, a
@@ -115,6 +117,8 @@ blank `eval` to implement, and a complete test suite that validates the specific
 sbt
 > testOnly capstone.*
 ```
+
+---
 
 ## Instructor vs. Student Copies
 
@@ -136,6 +140,8 @@ git switch mywork                # back to editing
 > :bulb: `git switch -c mywork student` makes a branch named `mywork` starting from the blank
 > `student` commit, edit there. The `student` tag stays the same if you
 > ever want to start over.
+
+---
 
 ## Tips
 
@@ -165,6 +171,8 @@ git switch mywork                # back to editing
   sbt "testOnly problem6.* -- -z \"shadowing\""
 ```
 
+---
+
 ## Concepts Covered
 
 - **Values vs. Expressions**: Why `Value` is decoupled from `Expr` (where `ErrorValue` comes in)
@@ -174,7 +182,7 @@ git switch mywork                # back to editing
 - **Shadowing**: Inner bindings override outer ones, only in their scope
 - **Short-Circuiting**: `and` skips its right operand when the left is `false`
 
-## Tips
+---
 
 _Built for CSCI &middot; Principles of Programming Languages_
 
